@@ -11,9 +11,10 @@
     <!-- Custom Styles-->
     <link rel="stylesheet" href="views/style.css">
     <!-- jQuery -->
-    <script type="text/javascript" src="vendors/jquery.js"></script>
-    <script type="text/javascript"src="scripts/client.js"></script>
 
+    <script type="text/javascript" src="vendors/jquery.js"></script>
+    <script type="text/javascript" src="scripts/client.js"></script>
+    <script type="text/javascript" src="scripts/dataInput.js"></script>
     <title>Team Creator App</title>
   </head>
   <body>
@@ -31,8 +32,9 @@
             <label for="numberOfTeams">How many teams do you need?</label>
             <input type="number" min="1" class="form-control" id="numberOfTeams" placeholder="number of teams">
             <button id='generateTeams' class="btn btn-primary">Generate Teams</button>
-            <button id='showHistory' class="btn btn-primary">Show History</button>
-
+            <button id="showHistory" class="btn btn-primary">Show History</button>
+            <button id='clickToGetData' class="btn btn-primary">Click to Generate</button>
+            <!--<button id='clicktoGet' class="hidden btn btn-primary">Click to Generate</button>-->
         </div>
       </div>
       <div class="row">

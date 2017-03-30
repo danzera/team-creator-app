@@ -1,3 +1,4 @@
+
 // ARRAYS FOR TESTING PURPOSES
 var team1 = [{first: 'Teigen', last: 'Leonard'}, {first: 'Topher', last: 'Keller'}, {first: 'Claudia', last: 'Calderas'}, {first: 'Emily', last: 'Hoang'}, {first: 'Dan', last: 'Zera'}];
 var team2 = [{first: 'Craig', last: 'Baird'}, {first: 'Lisa', last: 'Schoofs'}, {first: 'Anisa', last: 'Abdulkadir'}, {first: 'Betsy', last: 'Rowley'}];
@@ -11,22 +12,24 @@ var app = express();
 var bodyParser = require("body-parser");
 var path = require("path");
 
+
 //Route Imports
+var chiTeam = require("./routes/inputRoute.js");
 
 //Database Variables
 var mongoose = require("mongoose");
-//var mongoURI = "mongodb://localhost:27017/Employees";
-//var MongoDB = mongoose.connect(mongoURI).connection;
+var mongoURI = "mongodb://localhost:27017/chiyaks";
+var MongoDB = mongoose.connect(mongoURI).connection;
 
 //error connecting to the database
-//MongoDB.on("error", function(err){
-//  console.log("Mongo Connection Error :" + err);
-//});
+MongoDB.on("error", function(err){
+ console.log("Mongo Connection Error :" + err);
+});
 
 //If we successfully hooked up to the database, let us know!
-//MongoDB.once("open", function(){
-//  console.log("Tots connected to Mongo, meow.");
-//});
+MongoDB.once("open", function(){
+ console.log("Tots connected to Mongo, meow.");
+});
 
 //Set the port
 app.set("port", (process.env.PORT || 5000));
@@ -39,6 +42,7 @@ app.use(express.static("server/public/"));
 app.get("/", function(req,res){
   res.sendFile(path.resolve("server/public/views/index.html"));
 });
+app.use("/", chiTeam);
 
 //Listen
 app.listen(app.get("port"), function(){
